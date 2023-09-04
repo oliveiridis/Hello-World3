@@ -23,7 +23,6 @@ jobs:
     - name: Commit and push changes
       run: |
         git checkout -b new-branch
-        out >> test.html
         git add .
         git commit -m "Auto commit by GitHub Actions"
         git push target-repo new-branch
