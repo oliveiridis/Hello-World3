@@ -27,4 +27,4 @@ jobs:
         git commit -m "Auto commit by GitHub Actions"
         git push target-repo new-branch
       env:
-        GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.PAT_token }}
