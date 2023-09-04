@@ -1,0 +1,30 @@
+name: Commit to Different Repo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Configure Git
+      run: |
+        git config user.name "Your GitHub Username"
+        git config user.email "vitor.oliveira@hotmail.com"
+        git remote add target-repo https://github.com/username/target-repo.git
+        git fetch target-repo
+
+    - name: Commit and push changes
+      run: |
+        git checkout -b new-branch
+        git add .
+        git commit -m "Auto commit by GitHub Actions"
+        git push target-repo new-branch
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
