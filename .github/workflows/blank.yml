@@ -29,3 +29,18 @@ jobs:
         git push target-repo new-branch
       env:
         GITHUB_TOKEN: ${{ secrets.PAT_token }}
+        
+    - name: Clone the source repository
+      run: |
+        git clone https://github.com/oliveiridis/Hello-World1.git
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAT_token }}
+
+    - name: Copy source repository contents to target repository
+      run: |
+        cp -r source-repo/* .
+        git add .
+        git commit -m "Copy contents from source repository"
+        git push origin main
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAT_token }}
