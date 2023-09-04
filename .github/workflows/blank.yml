@@ -22,7 +22,7 @@ jobs:
         
     - name: Clone the source repository
       run: |
-        git clone https://github.com/oliveiridis/Hello-World1.git
+        git clone https://github.com/oliveiridis/Hello-World.git
       env:
         GITHUB_TOKEN: ${{ secrets.PAT_token }}
 
