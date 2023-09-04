@@ -28,7 +28,7 @@ jobs:
 
     - name: Copy source repository contents to target repository
       run: |
-        ll
+        ls
         cp -r Hello-World/* .
         git add .
         git commit -m "Copy contents from source repository"
