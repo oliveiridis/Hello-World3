@@ -28,7 +28,8 @@ jobs:
 
     - name: Copy source repository contents to target repository
       run: |
-        cp -r source-repo/* .
+        ll
+        cp -r Hello-World/* .
         git add .
         git commit -m "Copy contents from source repository"
         git push origin main
