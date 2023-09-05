@@ -39,7 +39,8 @@ jobs:
     
     - name: Copy source repository target to same repository
       run: |
-        ls
+        ls 
+        git remote -v
         git add .
         git status
         git commit -m "Auto commit by GitHub Actions"
