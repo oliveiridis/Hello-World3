@@ -34,9 +34,10 @@ jobs:
     - name: Configure Git
       run: |
         git config user.name "Your GitHub Username"
-        git config user.email "vitor.oliveira@hotmail.com"
+        git config user.email "vito.oli@hotmail.com"
         git remote add target-repo https://github.com/oliveiridis/Hello-World2.git
         git fetch target-repo
+        
         
     - name: Clone the source repository
       run: |
@@ -54,7 +55,32 @@ jobs:
         #git push origin main
       env:
         GITHUB_TOKEN: ${{ secrets.PAT_token }}
-    
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - run: pip install -r requirements.txt
+      - name: build documentation
+        run: make html
+      - run: touch _build/html/.nojekyll
+      - uses: cpina/github-action-push-to-another-repository@main
+        env:
+          SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
+        with:
+          source-directory: '_build/html'
+          destination-github-username: 'cpina'
+          destination-repository-name: 'push-to-another-repository-docs'
+          user-email: carles@pina.cat
+          target-branch: gh-pages
+          target-directory: docs
+
+
+
     - name: Copy source repository target to same repository
       run: |
         cp -r Hello-World/* .
