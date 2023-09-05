@@ -68,7 +68,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.PAT_token }}
 
     - name: Pushes check
-      run: git config --global --add safe.directory /tmp/tmp.MHNPnC
+      run: git config --global --add safe.directory /tmp/
       
     - name: Pushes test folder
       uses: datalbry/copy_folder_to_another_repo_action@1.0.0
