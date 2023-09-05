@@ -67,6 +67,9 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.PAT_token }}
 
+    - name: Pushes check
+      run: git config --global --add safe.directory /tmp/*
+      
     - name: Pushes test folder
       uses: datalbry/copy_folder_to_another_repo_action@1.0.0
       env:
@@ -79,4 +82,5 @@ jobs:
         destination_branch: 'main'
         user_name: 'oliveiridis'
         commit_msg: '[GHA] Update the test files.'
+    
         
