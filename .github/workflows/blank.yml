@@ -75,7 +75,8 @@ jobs:
         source_folder: 'Hello-World'
         destination_repo: 'oliveiridis/Hello-World2'
         destination_folder: ''
-        user_email: 'vitor.oli@hotmail.com'
+        user_email: 'vito.oli@hotmail.com'
+        destination_branch: 'main'
         user_name: 'oliveiridis'
         commit_msg: '[GHA] Update the test files.'
         
