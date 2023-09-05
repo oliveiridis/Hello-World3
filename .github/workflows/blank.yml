@@ -39,8 +39,6 @@ jobs:
     - name: Copy source repository target to same repository
       run: |
         ls
-        git status
-        cp -r Hello-World/* .
         git add .
         git status
         git commit -m "Auto commit by GitHub Actions"
