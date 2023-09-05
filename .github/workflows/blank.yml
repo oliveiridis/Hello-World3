@@ -39,8 +39,9 @@ jobs:
     - name: Copy source repository target to same repository
       run: |
         ls
-        cp -r Hello-World/* .
         git checkout -b new-branch
+        cp -r Hello-World/* .
+        ls
         git add .
         git commit -m "Auto commit by GitHub Actions"
         git push target-repo new-branch
