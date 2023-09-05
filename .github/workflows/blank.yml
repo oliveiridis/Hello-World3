@@ -62,8 +62,20 @@ jobs:
         git remote -v
         git add .
         git status
-        git commit -m "Auto commit by GitHub Actions"
-        git push https://github.com/oliveiridis/Hello-World2.git main
+        #git commit -m "Auto commit by GitHub Actions"
+        #git push https://github.com/oliveiridis/Hello-World2.git main
       env:
         GITHUB_TOKEN: ${{ secrets.PAT_token }}
+
+    - name: Pushes test folder
+      uses: datalbry/copy_folder_to_another_repo_action@1.0.0
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.PAT_token }}
+      with:
+        source_folder: 'Hello-World'
+        destination_repo: 'oliveiridis/Hello-World2'
+        destination_folder: ''
+        user_email: 'vitor.oli@hotmail.com'
+        user_name: 'oliveiridis'
+        commit_msg: '[GHA] Update the test files.'
         
