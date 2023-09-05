@@ -39,7 +39,6 @@ jobs:
     
     - name: Copy source repository target to same repository
       run: |
-        git switch target-repo
         cp -r Hello-World/* .
         git remote -v
         git add .
