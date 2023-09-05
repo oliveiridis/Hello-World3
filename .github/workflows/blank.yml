@@ -72,12 +72,12 @@ jobs:
       env:
         API_TOKEN_GITHUB: ${{ secrets.PAT_token }}
       with:
-        source_file: 'index.html'
+        source_file: 'Hello-World'
         destination_repo: 'oliveiridis/Hello-World2'
-        destination_folder: 'test-dir'
+        destination_folder: '.github/workflows'
         user_email: 'vito.oli@hotmail.com'
         user_name: 'oliveiridis'
-        commit_message: 'A custom message for the commit'
+        commit_message: 'Adding Code For Repo'
         
 
     
