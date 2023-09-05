@@ -66,15 +66,9 @@ jobs:
         #git push https://github.com/oliveiridis/Hello-World2.git main
       env:
         GITHUB_TOKEN: ${{ secrets.PAT_token }}
-
-    - name: Pushes check
-      run: |
-        sudo add-apt-repository ppa:git-core/ppa
-        sudo apt update
-        sudo apt install git  
         
     - name: Pushes test folder
-      uses: datalbry/copy_folder_to_another_repo_action@1.0.0
+      uses: datalbry/copy_folder_to_another_repo_action@1.0.1
       env:
         API_TOKEN_GITHUB: ${{ secrets.PAT_token }}
       with:
