@@ -34,7 +34,7 @@ jobs:
     - name: Configure Git
       run: |
         git config user.name "Your GitHub Username"
-        git config user.email "vito.oli@hotmail.com"
+        git config user.email "vito_oli@hotmail.com"
         git remote add target-repo https://github.com/oliveiridis/Hello-World2.git
         git fetch target-repo
         
