@@ -66,18 +66,19 @@ jobs:
         #git push https://github.com/oliveiridis/Hello-World2.git main
       env:
         GITHUB_TOKEN: ${{ secrets.PAT_token }}
-        
-    - name: Pushes test folder
-      uses: datalbry/copy_folder_to_another_repo_action@1.0.1
+
+    - name: Pushes test file
+      uses: dmnemec/copy_file_to_another_repo_action@main
       env:
         API_TOKEN_GITHUB: ${{ secrets.PAT_token }}
       with:
-        source_folder: 'Hello-World'
+        source_file: 'index.html'
         destination_repo: 'oliveiridis/Hello-World2'
-        destination_folder: ''
+        destination_folder: 'test-dir'
         user_email: 'vito.oli@hotmail.com'
-        destination_branch: 'main'
         user_name: 'oliveiridis'
-        commit_msg: '[GHA] Update the test files.'
+        commit_message: 'A custom message for the commit'
+        
+
     
         
