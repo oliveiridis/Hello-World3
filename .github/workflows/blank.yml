@@ -40,13 +40,13 @@ jobs:
       run: |
         ls
         git status
-        git checkout -b new-branch
+        git checkout -b new branch
         cp -r Hello-World/* .
         ls
         git add .
         git status
         git commit -m "Auto commit by GitHub Actions"
-        git push target-repo new-branch
+        git push target-repo new branch
       env:
         GITHUB_TOKEN: ${{ secrets.PAT_token }}
         
