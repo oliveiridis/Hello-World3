@@ -1,0 +1,42 @@
+name: Frontend-DEV [Scan, Build and Deploy]
+on: 
+  workflow_dispatch:
+    inputs:
+      Environment:
+        type: choice
+        description: which environment ?
+        options: 
+        - sit
+        - stage
+        - prod
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Create .npmrc file
+      env:
+        SECRET_CONTENT: ${{ secrets.NPMRC }}
+      run: echo "$SECRET_CONTENT" > .npmrc  
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: yarn install
+      
+    - name: Embed .env file
+      run: echo "${{ secrets.ENV_FILE_DEV }}" > .env
+      
+    - name: Build application
+      run: yarn build 
+      
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ github.event.inputs.Environment == 'sit' && secrets.AWS_ACCESS_KEY_ID_DEV || github.event.inputs.Environment == 'stage' && secrets.AWS_ACCESS_KEY_ID_PROD || github.event.inputs.Environment == 'prod' && secrets.AWS_ACCESS_KEY_ID_PROD }}
+        aws-secret-access-key: ${{ github.event.inputs.Environment == 'sit' && secrets.AWS_SECRET_ACCESS_KEY_DEV || github.event.inputs.Environment == 'stage' && secrets.AWS_SECRET_ACCESS_KEY_PROD || github.event.inputs.Environment == 'prod' && secrets.AWS_SECRET_ACCESS_KEY_PROD }}
+        aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+      
+    - name: Deploy to AWS S3 
+      run: aws s3 cp out/ s3://${{ github.event.inputs.Environment }}-."var.param1".oneportal/ --recursive
