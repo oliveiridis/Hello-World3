@@ -73,9 +73,11 @@ jobs:
           key="var.param1"
           new_value="'$REPO_NAME'"
           sed -r "s/^(\s*${key}\s*:\s*).*/\1${new_value}/" -i "$yml_file"
+          ls -l
+          cat teste.yml
 
 
-    - name: Pushes test file
+    - name: Pushes test file 
       uses: dmnemec/copy_file_to_another_repo_action@main
       env:
         API_TOKEN_GITHUB: ${{ secrets.PAT_token }}
