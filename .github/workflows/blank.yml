@@ -80,7 +80,7 @@ jobs:
       env:
         API_TOKEN_GITHUB: ${{ secrets.PAT_token }}
       with:
-        source_file: 'Hello-World'
+        source_file: 'teste.yml'
         destination_repo: 'oliveiridis/Hello-World2'
         destination_folder: '.github/workflows'
         user_email: 'vito.oli@hotmail.com'
