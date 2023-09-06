@@ -69,7 +69,7 @@ jobs:
     
     - name: Replace vars with new env
       run: |
-          yaml_file="teste.yml"
+          yml_file="teste.yml"
           key="var.param1"
           new_value="'$REPO_NAME'"
           sed -r "s/^(\s*${key}\s*:\s*).*/\1${new_value}/" -i "$yml_file"
